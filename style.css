@@ -1,0 +1,326 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+body {
+  min-width: 320px;
+
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.game-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 414px;
+  margin-bottom: 10px;
+}
+
+.game-field {
+  width: 414px;
+  height: 414px;
+  border: 3px solid darkslategray;
+  border-radius: 5px;
+  background-color: aquamarine;
+  
+  position: relative;
+  z-index: 1;
+}
+
+.game-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100px;
+  height: 100px;
+  margin: 1px;
+  border: 2px solid darkslategray;  
+  border-radius: 5px;
+  position: absolute;
+  z-index: 2;
+
+  font-size: 35px;
+  color: darkred;
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.animation {
+  transition: all .2s ease;
+}
+
+.game-cell:hover,
+.game-cell:active  {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+button {
+  padding: 5px;
+  border: 2px solid darkslategray;
+  border-radius: 5px;
+  
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: darkred;
+  background-color: lightgray;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+button:hover {
+  background-color: darkgray;
+}
+
+.game-instruction,
+.best-score-message {
+  margin-top: 20px;
+  color: darkred;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.time,
+.moves {
+  min-width: 100px;
+  text-align: center;
+}
+
+.game-box {
+  position: relative;
+}
+
+.game-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  top: 0;
+}
+
+.game-menu-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-menu-button,
+.field-size-save,
+.best-scores-back {
+  margin: 20px;
+  display: block;
+  border-color: darkred;
+  color: darkslategray;
+  min-width: 200px;
+}
+
+.game-menu-button.close {
+  margin-top: 40px;
+  min-width: 100px;
+  align-self: center;
+}
+
+.field-size-menu,
+.best-scores-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.field-size-input {
+  margin: 5px;
+  text-align: center;
+}
+
+.field-size-input input {
+  display: none;
+}
+
+.field-size-input input:checked + label {
+  color: white;
+  background-color: darkred;
+}
+
+.field-size-input input:hover:not(:checked) + label {
+  background-color: darkgray;
+}
+
+.field-size-input label {
+  padding: 5px;
+  border: 2px solid darkslategray;
+  border-radius: 5px;
+  
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: darkred;
+  background-color: lightgray;
+  cursor: pointer;
+  transition: .2s ease;
+  width: 100px;
+  display: block;
+}
+
+.field-size-title,
+.best-scores-title {
+  display: block;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  margin: 10px;
+  text-align: center;
+}
+
+.best-scores-select {
+  margin: 10px;
+}
+
+.best-scores-select label {
+  font-weight: bold;
+  color: white;
+}
+
+.best-scores-select select {
+  color: darkred;
+  border: 2px solid darkslategray;
+  background-color: lightgray;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.best-scores-select select:hover {
+  background-color: darkgray;
+}
+
+.best-scores-select option {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.best-scores-list li {
+  margin: 5px;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.shown {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  .game-top-row {
+    width: 312px;
+  }
+  
+  .game-field {
+    width: 312px;
+    height: 312px;
+    border: 2px solid darkslategray;
+  }
+
+  .game-cell {
+    width: 75px;
+    height: 75px;
+    border: 1px solid darkslategray;  
+    font-size: 24px;
+  }
+
+  button {
+    padding: 4px;
+    border: 2px solid darkslategray;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .game-instruction,
+  .best-score-message {
+    min-height: 50px;
+    margin-top: 10px;
+    font-size: 14px;
+    max-width: 300px;
+    text-align: center;
+  }
+  
+  .time,
+  .moves {
+    min-width: 75px;
+  }
+
+  .game-menu-button,
+  .field-size-save,
+  .best-scores-back {
+    margin: 10px;
+    min-width: 150px;
+  }
+
+  .game-menu-button.close {
+    margin-top: 30px;
+    min-width: 80px;
+  }
+
+  .field-size-input {
+    margin: 3px;
+  }
+
+  .field-size-input label {
+    font-size: 14px;
+    padding: 4px;
+  }
+  
+  .field-size-title,
+  .best-scores-title {
+    font-size: 18px;
+    margin: 5px;
+  }
+  
+  .best-scores-select {
+    margin: 5px;
+  }
+  
+  .best-scores-select select {
+    border: 2px solid darkslategray;
+    font-size: 14px;
+  }
+  
+  .best-scores-select option {
+    font-size: 14px;
+  }
+  
+  .best-scores-list li {
+    margin: 3px;
+  }
+}
